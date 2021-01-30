@@ -80,6 +80,8 @@ struct CPU
 		INS_LDA_AB = 0xAD,
 		INS_LDA_ABX = 0xBD,
 		INS_LDA_ABY = 0xB9,
+		INS_LDA_INDX = 0xA1,
+		INS_LDA_INDY = 0xB1,
 
 		INS_JSR = 0x20;
 
@@ -118,6 +120,10 @@ struct CPU
 				Cycles--;
 				break;
 			}
+			/*case INS_LDA_AB: {
+				Word AbsAddress = FetchWord(Cycles, memory);
+				ReadByte(Cycles, AbsAddress, memory);
+			}*/
 			default:
 			{std::cout << "Instruction Not handled" << Ins << std::endl; break; }
 			}

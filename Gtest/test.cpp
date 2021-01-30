@@ -149,42 +149,6 @@ TEST_F(M6502Test, TestLDAAbsoluteCanLoadToRegister) {
 	EXPECT_EQ(CyclesUsed, EXPECTED_CYCLES);
 }
 
-TEST_F(M6502Test, TestLDAAbsoluteXCanLoadToRegisterWhenCrossesPageBoundry) {
-	cpu.X = 0xFF;
-
-	mem[0xFFFC] = CPU::INS_LDA_ABX;
-	mem[0xFFFD] = 0x02;
-	mem[0x007F] = 0x44; 
-	mem[0x4501] = 0x37; // 0x4402 + 0xFF crosses Page boundry for extra 1 cycle
-
-	constexpr s32 EXPECTED_CYCLES = 5;
-	CPU cpuCopy = cpu;
-
-	s32 CyclesUsed = cpu.execute(4, mem);
-	EXPECT_EQ(cpu.A, 0x37);
-	EXPECT_FALSE(cpu.Z);
-	EXPECT_FALSE(cpu.N);
-	VerfiyUnmodifiedFlags(cpuCopy, cpu);
-	EXPECT_EQ(CyclesUsed, EXPECTED_CYCLES);
-}
-
-TEST_F(M6502Test, TestLDAAbsoluteCanLoadToRegister) {
-	mem[0xFFFC] = CPU::INS_LDA_AB;
-	mem[0xFFFD] = 0x80;
-	mem[0x007F] = 0x44;
-	mem[0x4480] = 0x37;
-
-	constexpr s32 EXPECTED_CYCLES = 4;
-	CPU cpuCopy = cpu;
-
-	s32 CyclesUsed = cpu.execute(4, mem);
-	EXPECT_EQ(cpu.A, 0x37);
-	EXPECT_FALSE(cpu.Z);
-	EXPECT_FALSE(cpu.N);
-	VerfiyUnmodifiedFlags(cpuCopy, cpu);
-	EXPECT_EQ(CyclesUsed, EXPECTED_CYCLES);
-}
-
 TEST_F(M6502Test, TestLDAAbsoluteXCanLoadToRegister) {
 	cpu.X = 1;
 
