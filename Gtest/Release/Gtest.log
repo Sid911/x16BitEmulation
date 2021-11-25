@@ -1,0 +1,21 @@
+﻿  pch.cpp
+  6502AddWithCarryTests.cpp
+  6502AND_EOR_ORA_Tests.cpp
+  6502BranchTests.cpp
+  6502CompareRegisterTests.cpp
+  6502IncrementDecrementTests.cpp
+  6502JumpsAndCallsTests.cpp
+  6502LoadPrgTests.cpp
+  6502LoadRegisterTests.cpp
+  6502ShiftsTests.cpp
+  6502StackOperationsTests.cpp
+  6502StatusFlagChangeTests.cpp
+  6502StoreRegisterTests.cpp
+  6502SystemFunctionsTests.cpp
+  6502TransferRegisterTests.cpp
+  6502TestMain.cpp
+  Generating Code...
+  emu_6502.lib(emu_6502.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+  Generating code
+  Finished generating code
+  Gtest.vcxproj -> C:\Users\900su\Documents\Github\x16BitEmulation\Release\Gtest.exe
